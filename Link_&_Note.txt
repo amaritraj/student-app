@@ -1,0 +1,56 @@
+Database Diagram
+-------------------
+https://dbdiagram.io/d/AmarIT-66dea1e0bc6a4b5bb59d898e
+
+composer create-project laravel/laravel event-app
+npm install -g @vue/cli (comment then)
+vue create event-management (Project Create comment)
+npm i or 
+npm run serve OR npm run dev
+=====================================================
+
+artisan Comment
+------------------
+php artisan make:controller BlogController
+php artisan migrate
+php artisan migrate:fresh
+php artisan make:model Post -m
+php artisan make:migration create_bookings_table
+php artisan make:model Category -mc (Model/Table/Controller)
+php artisan optimize
+php artisan cache:clear
+php artisan route:clear
+php artisan config:clear
+
+
+VS Code Short Curt
+-----------------------------------
+Line Dublike : Shift+Alt+AwaraDown
+
+
+Table-1
+------------
+$table->id();
+$table->unsignedBigInteger('user_id');
+$table->unsignedBigInteger('admission_id');
+$table->string('payment_type'); 
+$table->decimal('payment_amount', 10, 2);
+$table->string('payment_memo')->nullable(); 
+$table->date('payment_date'); 
+$table->string('payment_status');
+$table->timestamps();
+// Foreign key constraints
+$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+$table->foreign('admission_id')->references('id')->on('admission')->onDelete('cascade');
+=======================================================================
+Table-2
+------------
+$table->id();
+$table->foreignId('user_id')->constrained()->onDelete('cascade');
+$table->foreignId('admission_id')->constrained()->onDelete('cascade');            
+$table->string('payment_type');
+$table->decimal('payment_amount', 10, 2);
+$table->string('payment_memo')->nullable();
+$table->date('payment_date');
+$table->enum('payment_status', ['Pending', 'Completed'])->default('Pending');
+$table->timestamps();
